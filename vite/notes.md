@@ -31,6 +31,8 @@ Vite源码阅读笔记
 
 - 使用`chokidar`监听文件变更，进而实现热更新（handleHMRUpdate）
 - `client`（客户端）接收`webSocket`消息，执行更新操作（handleMessage）
+- 热更新的具体操作是由`plugin`完成的，`client`只是负责调用
+- 编译插件热更新处理的核心在于对`import.meta.hot.accept`的注入，注册了热更新的方法供`client`调用
 
 # Codes 闪光代码
 
@@ -67,6 +69,10 @@ Vite源码阅读笔记
 ## [sirv](https://www.npmjs.com/package/sirv)
 
 提供静态资源访问服务的中间件
+
+## [es-module-lexer](https://www.npmjs.com/package/es-module-lexer)
+
+es代码的import/export分析工具
 
 
 # Expand 拓展知识
